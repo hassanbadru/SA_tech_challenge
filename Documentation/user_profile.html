@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile | Stroller Dessert</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet ================================================== -->
+<link rel="stylesheet" type="text/css"  href="css/style.css">
+<link href="css/profile.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- ChartJS -->
+<script src="js/Chart.min.js" type="text/javascript"></script>
+
+<!--KnockoutJS MVVM -->
+<script src="js/knockout-3.4.1.js"></script>  
+
+</head>
+    
+    
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand page-scroll" href="#page-top"> <i class="fa fa-forward" aria-hidden="true"></i> STROLLER DESSERT </a> </div>
+      
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog" aria-hidden="true" style="color:white; font-size:20px;"></i></a></li>
+        <li> <a class="page-scroll" href="index.html">Log Out</a> </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    
+ <!-- main -->
+	<div class="main">
+		<div class="main-info">
+			<div class="main-row"><!-- main-row-one -->
+				<div class="profile-grid logo float-lt">
+                    
+    <div class="cont">
+        
+    <div class="tab-content bio">
+        <img src="img/hassan_pic.jpg" id="preview" alt="Avatar">
+    <div id="prof" class="tab-pane fade in active">
+        <br/>
+        
+        <h2><span data-bind="text: fullName">Hassan Badru </span>&nbsp;<a data-toggle="pill" href="#edit"><i class="fa fa-pencil active" aria-hidden="true" style="color:#aaa; font-size:16px;"></i></a></h2>
+         
+        <p><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp; <span data-bind="text: selectedOptionValue">The Cake Factory</span></p>
+        <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <span data-bind="text: location">New York, NY</span></p>
+        
+        
+    </div>
+    <div id="edit" class="tab-pane fade">
+        <form>
+        <input type="text" data-bind="value: fullName" placeholder="Change Profile Name">
+        
+        <label for="avatar" style="text-align:left">Change Avatar:&nbsp;</label>
+        <input class="avatar" type="file" id="avatar" name="avatar" style="text-align:left"> <br/>
+        
+        <input type="text" data-bind="value: location" placeholder="Change Location"><br/>
+        <label for="rest" style="text-align:center">Change Preferred Restaurant:</label>
+        <select name="rest" data-bind="options: optionValues, value: selectedOptionValue">
+            <!--<option value="theCakeFactory">The Cake Factory</option>
+            <option value="CupcakeDeli">Cupcake Deli</option>
+            <option value="croissantExpress">Croissant Express</option> -->
+        </select>
+        <br/><br/>
+        <a href="#prof" data-toggle="tab">
+            <!--<button style="background:green; border:0px;color:#eee; text-align:right;">SAVE</button>-->
+            <input type="submit" value="SAVE" style="background:green;border:0px;text-align:center;width:150px">
+        </a>
+        </form>
+    </div>
+
+  </div>
+            
+      </div>
+            
+                    <br/><br/>
+                    <div class="range"><a href="#" data-toggle="modal" data-target="#lModal">
+                    <div class="progress">
+                        31,274 steps
+                    </div></a>
+                    </div>
+                   
+                    
+                    <p class="ilevels">28,726 steps needed to reach <a href="#" data-toggle="modal" data-target="#lModal"><span style="background:red;color:white;">&nbsp;Red Level&nbsp;</span> &nbsp; <i class="fa fa-info-circle" aria-hidden="true"></i></a></p>
+                   
+				</div>
+				<div class="clear"> </div>
+			</div>	
+			<div class="main-row2"><!-- main-row-two -->
+				<div class="skills float-lt">
+					<h3 class="title" style="color:darkblue">Progress</h3>
+                    <ul>
+						<li><h2>Steps Today</h2></li> <hr>
+                        <p style="font-weight: 600; font-size: 14px; color: brown"><span data-bind="text: complete"></span>% Completed Today</p>
+                        <canvas id="steps" width="300" height="200"></canvas>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <!--<th>Steps Today</th><th>Steps Left</th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Current Daily Goal:<br><div style="background:#ddd; height: 10px;"></div></td>
+                                    <td>Steps Today<br><div style="background:#FF8153; height: 10px;"></div></td>
+                                    <td>Steps Left <br><div style="background:#FFEA88; height: 10px;" ></div></td>
+                                   
+                                </tr>
+                                <tr style="height:20px">
+                                    <td><span data-bind="text: dGoal"></span></td>
+                                    <td><span data-bind="text: dSteps"></span></td>
+                                    <td><span data-bind="text: d_left"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </ul>
+                    
+    <script>
+        var d_goal = 2000; //Stroll Daily Goal
+        var d_steps = 1213; //Steps Todays
+        var d_left = d_goal - d_steps; //Steps Left
+        var complete = (d_steps / d_goal) * 100;
+                var pieData = [
+            {
+                value : d_steps,
+                color : "#FF8153",
+            },
+            {
+                value : d_left,
+                color : "#FFEA88",
+            }
+        ];
+        
+        
+        // Get the context of the canvas element we want to select
+        var steps = document.getElementById("steps").getContext("2d");
+        new Chart(steps).Doughnut(pieData);
+        
+    </script>
+            
+                    <br/>
+                    <div>
+                        <button href="#" data-toggle="modal" data-target="#myModal" class="btn page-scroll">Set Daily Goal</button>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    
+                    <h2 style="text-align:center">Total Miles</h2><hr> <a href="#"><p style="color:indigo; font-size:30px; font-weight:300">13 mi</p></a>
+				</div>
+                <div class="skills2 float-rt">
+					<h3 class="title" style="color:darkblue">Stroll History</h3>
+                    
+                    <div>
+                    
+                        <ul class="nav nav-tabs">
+                            <li><a data-toggle="tab" href="#all">All</a></li>
+                            <li><a a data-toggle="tab" href="#twelve">12 Months</a></li>
+                            <li><a data-toggle="tab" href="#six">6 Months</a></li>
+                        </ul>
+                        
+                        <div class="tab-content">
+                            <div id="all" class="tab-pane fade in active">
+                                
+                                <br/>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                           <th>Date</th>
+                                           <th>Steps</th>
+                                           <th>Miles</th> 
+                                        </tr>
+                                        </thead>
+                                        
+                                        <tbody>   
+                                        <tr>
+                                            <td> Yesterday</td>
+                                            <td> 1,073</td>
+                                            <td> 0.54</td>
+                                        </tr>
+                                        <tr>
+                                            <td> May 6, 2016</td>
+                                            <td> 4,338</td>
+                                            <td> 2.17</td>
+                                        </tr>
+                                        <tr>
+                                            <td> Nov 13, 2009</td>
+                                            <td> 4,338</td>
+                                            <td> 2.17</td>
+                                        </tr>
+                                    
+                                    </table>
+                                
+                            </div>
+                            <div id="twelve" class="tab-pane fade">
+                                
+                                <br/><br/>
+									<table>
+                                        <thead>
+                                        <tr>
+                                           <th>Date</th>
+                                           <th>Steps</th>
+                                           <th>Miles</th> 
+                                        </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                        <tr>
+                                            <a href="#"><td> Yesterday</td></a>
+                                            <td> 1,073</td>
+                                            <td> 0.54</td>
+                                        </tr>
+                                        <tr>
+                                            <td> May 6, 2016</td>
+                                            <td> 4,338</td>
+                                            <td> 2.17</td>
+                                        </tr>
+                                    
+                                    </table>
+                                
+                            </div>
+                            <div id="six" class="tab-pane fade">
+                                
+                                <br/><br/>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                           <th>Date</th>
+                                           <th>Steps</th>
+                                           <th>Miles</th> 
+                                        </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                        <tr>
+                                            <td> Yesterday</td>
+                                            <td> 1,073</td>
+                                            <td> 0.54</td>
+                                        </tr>
+                                    
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+					
+				</div>
+				<div class="clear"> </div>
+			</div>
+        </div>
+        
+        <!-- Trigger the modal with a button -->
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+<!-- Settings Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Settings</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+            Change Email: &nbsp;<input type="email" placeholder="Email address"><br/><br/>
+            Change Password: &nbsp;<input type="password" placeholder="Password"> <br/><br/>
+            Confirm Password: &nbsp;<input type="password" placeholder="Confirm new password"> <br/><br/>
+            <label for="dG">Daily Stroll Goal: &nbsp;</label>
+            <select name="dG" data-bind="options: dGoalOpt, value: dGoal">
+                <!--<option value="1000"> 1,000 Steps </option>
+                <option value="2000"> 2,000 Steps </option>
+                <option value="3000"> 3,000 Steps </option>
+                <option value="4000"> 4,000 Steps </option>  
+                <option value="5000"> 5,000 Steps </option>-->
+            </select>
+            
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Stroller Legend Modal -->
+<div id="lModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><strong>Stroller Levels</strong></h4>
+          <table>
+            <thead>
+                <tr>
+                </tr>
+            </thead>
+                                        
+            <tbody>
+                <tr>
+                    <td> <div class="colpick" style="background:indigo;">Indigo</div><br/></td>
+                    <td> 0 - 60,000 Steps</td>
+                </tr> 
+                
+                <tr>
+                    <td> <div class="colpick" style="background:red;">Red</div></td>
+                    <td> 60,001 - 308,000 Steps</td>
+                </tr> 
+                
+                <tr>
+                    <td> <div class="colpick"style="background:orange">Orange</div></td>
+                    <td> 308,000 - 1,240,000 Steps</td>
+                </tr> 
+                
+                <tr>
+                    <td> <div class="colpick"style="background:green">Green</div></td>
+                    <td>1,240,001 - 3,104,000 Steps</td>
+                </tr> 
+                
+                <tr>
+                    <td> <div class="colpick"style="background:blue;">Blue</div></td>
+                    <td>3,104,001 - 6,212,000 Steps</td>
+                </tr> 
+                
+                <tr>
+                    <td> <div class="colpick" style="background:silver">Silver</div></td>
+                    <td>6,212,001 - 18,638,000 Steps</td>
+                </tr> 
+                
+                <tr>
+                    <td> <div class="colpick" style="background:gold;">Gold</div></td>
+                    <td>18,638,001+ Steps</td>
+                </tr> 
+            <tbody>
+         </table>
+          
+      </div>
+    </div>
+
+  </div>
+</div>
+	
+	</div>
+    
+<script>
+    
+// This is the *viewmodel*
+var viewModel = {
+    fullName : ko.observable("Hassan Badru"),
+    location: ko.observable("New York, NY"),
+    optionValues: ["The Cake Factory", "Cupcake Deli", "Croissant Express"],
+    selectedOptionValue: ko.observable("The Cake Factory"),
+    dGoalOpt: ["1000","2000","3000","4000","5000"],
+    dGoal: ko.observable("2000"),
+    dSteps: "1213"
+};
+    this.dLeft = ko.computed(function(){
+        return parseInt(this.dGoal) - parseInt(this.dSteps);
+    });
+    
+    
+ko.applyBindings(viewModel);
+</script>
+
+	<!-- main -->   
+<script src="js/change_avatar.js" type="text/javascript"></script> 
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+
+
+</body>
+</html>

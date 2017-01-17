@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dessert Makers | Stroller Dessert</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+<link rel="shortcut icon" href="../favicon.ico"> 
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css"  href="css/style.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  
+    <!-- Stroller Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+<div class="modal-content">
+<div class="modal-body">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<div class="form">
+  <form class="register-form" action="user_profile.html">
+    <h4>Create a new account</h4>
+    <input type="text" placeholder="shoe ID"/>
+    <input type="text" placeholder="email address"/>
+    <input type="password" placeholder="password"/>
+    <button>create</button>
+    <p class="message">Already registered? <a href="#">Sign In</a></p>
+  </form>
+  <form class="login-form" action="user_profile.html">
+    <h4>Sign in to an existing account</h4>
+    <input type="text" placeholder="email address"/>
+    <input type="password" placeholder="password"/>
+    <button>login</button>
+    <p class="message">Not registered? <a href="#">Create an account</a></p>
+  </form>
+</div> 
+</div>
+</div>
+      
+    </div>
+  </div>
+    
+      <!-- Dessert Maker Modal -->
+  <div class="modal fade" id="mydModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+<div class="modal-content">
+<div class="modal-body">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<div class="form">
+  <form class="register-form" action="restaurant_profile.html">
+    <h4>New Dessert Maker</h4>
+    <input type="text" placeholder="username"/>
+    <input type="text" placeholder="email address"/>
+    <input type="password" placeholder="password"/>
+    <button>create</button>
+    <p class="message">Already registered? <a href="#">Sign In</a></p>
+  </form>
+  <form class="login-form" action="restaurant_profile.html">
+    <h4>Existing Dessert Maker</h4>
+    <input type="text" placeholder="email address"/>
+    <input type="password" placeholder="password"/>
+    <button>login</button>
+    <p class="message">Not registered? <a href="#">Create an account</a></p>
+  </form>
+</div> 
+</div>
+</div>
+      
+    </div>
+  </div> 
+    
+     <!-- Restaurant Info Modal -->
+  <div class="modal fade" id="riModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+<div class="modal-content">
+<div class="modal-body">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<br/>
+<br/>
+</div>
+</div>
+      
+    </div>
+  </div>
+    
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand page-scroll" href="index.html"> <i class="fa fa-forward" aria-hidden="true"></i> STROLLER DESSERT </a> </div>
+      
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <br/>
+        <p>Already a User? &nbsp;<a href="#myModal" data-toggle="modal" data-target="#myModal">Sign In</a> </p>
+      </ul>
+    </div>
+  </div>
+</nav>  
+
+
+
+<!-- Portfolio Section -->
+<div id="works">
+  <div class="container"> <!-- Container -->
+    <div class="section-title text-center center" style="height:80%">
+      <h2>Dessert Makers</h2>
+      <hr>
+      <div class="clearfix"></div>
+      <p>Using our proprietary pair of Strolling Sneakers, we track the number of steps that people take and then we send free dessert to children in need. More strolls, more dessert; it’s a classic win-win.</p>
+        <br/>
+        <a href="#myModal" data-toggle="modal" data-target="#mydModal" class="btn btn-default page-scroll">Dessert Makers Portal</a>
+    </div>  
+  </div>
+</div>
+ 
+
+<div class="container"> 
+    <h3>Find A Dessert Maker</h3>
+        <form>
+            <input id="myInput" class="rsearch" type="text" name="search" placeholder="Enter any keyword" onkeyup="myFunction()" style="background-image: url('img/searchicon.png');">
+        </form>
+    <br/>
+   <div> 
+     <table id="myTable"> 
+            <thead></thead>
+            <tbody>
+                <tr>
+                    
+                    <td class="infobox">
+                        <a href="#" data-toggle="modal" data-target="#riModal">
+                            
+                        <table>
+                        <thead></thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                        <img src="oven.jpg"/>
+                        <h3>Croissant Express</h3>
+                        <h4>@CroissantExpress</h4>
+                        <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;Boston, MA</p>
+                            </td>
+                            <td class="rstats">
+                                <p>25</p><h3>Children Fed</h3> 
+                                <p>108</p><h3>Number of Fans</h3> 
+                                <p>729,100</p><h3>Total Steps by Fans</h3> 
+                            </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                       
+                            </a>
+                    </td>
+                    
+                    <td class="infobox">
+                        <a href="#" data-toggle="modal" data-target="#riModal">
+            
+                        <table>
+                        <thead></thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <img src="oven.jpg"/>
+                                <h3>Cupcake Deli</h3>
+                                <h4>@CupcakeDeli</h4>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    &nbsp;&nbsp;Cambridge, MA
+                                </p>
+                            </td>
+                            <td class="rstats">
+                                <p>11</p><h3>Children Fed</h3> 
+                                <p>17</p><h3>Number of Fans</h3>
+                                <p>37,280</p><h3>Total Steps by Fans</h3>
+                            </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        </a>
+                    </td>
+                </tr> 
+                <tr>
+                    <td class="infobox">
+                    <a href="#" data-toggle="modal" data-target="#riModal">
+                        <table>
+                        <thead></thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <img src="oven.jpg"/>
+                                <h3>The Cake Factory</h3>
+                                <h4>@TheCakeFactory</h4>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;New York, NY</p>
+                            </td>
+                            <td class="rstats">
+                                <p>21</p><h3>Children Fed</h3>
+                                <p>34</p><h3>Number of Fans</h3>
+                                <p>200,000</p><h3>Total Steps by Fans</h3> 
+                            </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                    </a>
+                    </td>
+                    
+                 
+                </tr> 
+            </tbody>
+    </table>
+  </div>
+</div>
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myTable");
+    li = ul.getElementsByTagName("td");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+}
+</script>
+ <script src='js/jquery.min.js'></script>
+    <!-- SIGN IN/SIGN UP TOGGLE JS CODE -->
+    <script>
+    $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+    </script>    
+    
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --><!-- 
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> -->
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+
+</body>
+</html>

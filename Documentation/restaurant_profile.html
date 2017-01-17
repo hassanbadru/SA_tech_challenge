@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile | Stroller Dessert</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+<!--  Light Bootstrap Table core CSS    -->
+<link href="css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+    
+<!-- Stylesheet ================================================== -->
+
+<link rel="stylesheet" type="text/css"  href="css/style.css">
+<link href="css/profile.css" rel="stylesheet" type="text/css" media="all" />
+    
+<!--KnockoutJS MVVM -->
+<script src="js/knockout-3.4.1.js"></script>  
+    
+</head>
+    
+    
+<!--<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">-->
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand page-scroll" href="#"> <i class="fa fa-forward" aria-hidden="true"></i> STROLLER DESSERT </a> </div>
+      
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog" aria-hidden="true" style="color:white; font-size:20px;"></i></a></li>
+        <li> <a class="page-scroll" href="index.html">Log Out</a> </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    
+<div class="wrapper"> 
+<div class="content" style="padding-top:60px">
+            <div class="container-fluid">
+              <br/>
+                 <div class="row" style="background:white">
+                    <div class="col-md-3 binfo">
+                        <br/>
+                        <img src="img/bakery.jpg" id="preview" alt="Avatar">
+                        <div id="prof_rest" class="tab-pane fade in active">
+                            <h3 class="title"><span style="text-align:left;color:darkorange" data-bind="text: rName">The Cake Factory</span><a data-toggle="pill" href="#edit_rest">&nbsp;<i class="fa fa-pencil active" aria-hidden="true" style="color:grey; font-size:16px;"></i></a></h3>
+                                <p>@ &nbsp;<span data-bind="text: userName">TheCakeFactory </span></p>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span data-bind="text: rlocation">Somerville, MA</span></p>
+                        </div>
+                        
+                        <div id="edit_rest" class="tab-pane fade">
+                            <form>
+                                <label for="avatar" style="text-align:left">Change Avatar:&nbsp;</label>
+                                <input class="avatar" type="file" id="avatar" name="avatar" style="text-align:left"> <br/>
+                                
+                                <input type="text" data-bind="value: rName" placeholder="Change Restaurant Name">
+                                <input type="text" data-bind="value: rlocation" placeholder="Change Location"> <br/>
+                                <br/><br/>
+                                <a href="#prof_rest" data-toggle="tab">
+                                    <input type="submit" value="SAVE" style="background:green;border:0px;text-align:center;width:150px;color:white">
+                                </a>
+                            </form>
+                        </div>
+                        <br>
+                    </div>
+                     <div class="col-md-4">
+                         <br/>
+                          <div class="card">
+                                <div class="header">
+                                    <h4 class="title" style="color:darkblue">Delivery Information</h4>
+                                </div>
+                              <div class="content" style="text-align:right">
+                                <ul class="nav nav-tabs">
+                                    <li><a data-toggle="tab" href="#">All</a></li>
+                                    <li><a a data-toggle="tab" href="#">12 Months</a></li>
+                                    <li><a data-toggle="tab" href="#">6 Months</a></li>
+                                </ul>
+                                <table>
+                                        <thead>
+                                        <tr>
+                                           <th>Last Delivery</th>
+                                           <th>Location</th>
+                                        </tr>
+                                        </thead>
+                                        
+                                        <tbody>   
+                                        <tr>
+                                            <td> Yesterday</td>
+                                            <td> Somerville, MA</td>
+                                        </tr>
+                                        <tr>
+                                            <td> June 2, 2016</td>
+                                            <td> New York, NY</td>
+                                            <td><a href="#"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>&nbsp;&nbsp;<a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                    
+                                    </table>
+
+                
+                            </div>
+                         </div>
+                    </div>
+                     <div class="col-md-4">
+                         <br/>
+                          <div class="card">
+                                <div class="header">
+                                    <h4 class="title" style="color:darkblue">Delivery Alert</h4>
+                                </div>
+                              <div class="content" style="text-align:left">
+                              <div id="container" style="font-size:13px"></div>
+                                  <!-- TO SET THE PIE CHART VALUE -->
+                                    <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>                  
+                                    <script src="js/jquery.svgDoughnutChart_rest.js"></script>
+                                  <script>
+                                        $('#container').doughnutChart({
+                                        percentage: 20
+                                        });
+                                  </script>
+                              </div>
+                              <div class="content" style="text-align:right">
+                                
+                                  <a href="#" data-toggle="modal" data-target="#myModal" class="btn page-scroll">Set Monthly Goal</a>
+                                  <div class="footer">
+                                    
+                                    <div class="stats">
+                                        <br><p id="date"></p>
+                                        <script type="text/javascript">
+                                            document.getElementById("date").innerHTML = new Date("11 Jan 2017");
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-6">
+                    <a href="#">
+                        <div class="card lo">
+                            <div class="header">
+                                <h4 class="title" style="color:darkblue">Children Fed</h4>
+                            </div>
+                            <div class="content">
+                                <div style="color: darkorange; font-size: 40px">&nbsp;21</div>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+
+                    <div class="col-md-6">
+                        <a href="#">
+                        <div class="card lo">
+                            <div class="header">
+                                <h4 class="title" style="color:darkblue">Number of Fans</h4>
+                            </div>
+                            <div class="content">
+                                <div style="color: orange; font-size: 40px"> &nbsp;34</div>
+                      
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    </div>
+              
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="#">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title" style="color:darkblue">Fan Steps</h4><br/>
+                                <table>
+                                <thead>
+                                    <tr>
+                                        <th><p class="category">Total Fan Steps</p></th>
+                                        <th><p class="category">Average Steps per fan</p></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><div style="color: darkblue; font-size: 40px">200,000</div></td>
+                                        <td><div style="color: lightblue; font-size: 40px">3,591</div></td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                                
+                            </div>
+                            <div class="content">
+
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+
+                </div>
+        
+                    
+            </div>
+        </div>
+    
+<!-- Settings Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Settings</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+            Change Username: &nbsp;<input type="text" data-bind="value: userName" placeholder="Username"><br/><br/>
+            Change Password: &nbsp;<input type="password" placeholder="Password"> <br/><br/>
+            Confirm Password: &nbsp;<input type="password" placeholder="Confirm password"> <br/><br/>
+            <label for="mgoal">Monthly Stroll Goal: &nbsp;</label>
+            <select name="mgoal" data-bind="options: mGoalOpt, value: mGoal">
+                <!--<option value="100000"> 100,000 Steps </option>
+                <option value="200000"> 200,000 Steps </option>
+                <option value="300000"> 300,000 Steps </option>
+                <option value="400000"> 400,000 Steps </option>  
+                <option value="500000"> 500,000 Steps </option> -->
+            </select>
+            
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+    
+<script>
+    
+// This is a the *viewmodel*
+var viewModel = {
+    rName : ko.observable("The Chocolate Factory"),
+    userName: ko.observable("TheCakeFactory"),
+    rlocation: ko.observable("New York, NY"),
+    mGoalOpt: ["100,000","200,000","300,000","400,000","500,000"],
+    mGoal: ko.observable("200,000"),
+};
+    
+    
+ko.applyBindings(viewModel);      
+</script>
+	<!-- main -->   
+<script src="js/change_avatar.js" type="text/javascript"></script> 
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+
+<!-- Javascripts ================================================== --> 
+</div>
+</body>
+</html>
